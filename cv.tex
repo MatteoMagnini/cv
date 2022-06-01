@@ -26,7 +26,7 @@
     \begin{rSection}{In short}
         Research Fellow at \href{https://disi.unibo.it/it}{Department of Computer Science and Engineering} (DISI), University of Bologna.
         %
-        Main research activities comprehends the fields of Artificial Intelligence, First Order Logic, Knowledge Representation and Machine Learning.
+        Main research activities comprehends the fields of Artificial Intelligence, Machine Learning and Symbolic Techniques such as Symbolic Knowledge Extraction and Symbolic Knowledge Injection.
         %
         
     \end{rSection}
@@ -80,6 +80,11 @@
     
     \begin{rSection}{Experience}
         
+        \begin{rSubsection}{Teacher at professional education course}{\textbf{May 17-19, 2022}}{IFTS course}{\href{http://www.formart.it/home}{FORMart}}
+            \item Talks topics: Business Intelligence and Big Data.
+            \item References:  Prof. \href{mailto:a.ricci@unibo.it}{Alessandro Ricci}
+        \end{rSubsection}
+        
         \begin{rSubsection}{Teaching assistant for the course ``Fondamenti di Informatica''}{\textbf{Feb., 2022 $\rightarrow$ Now}}{School of Engineering and Architecture}{University of Bologna, Italy}
             \item Computer architecture. Representation of Information. Algorithms and data structures. C programming language.
             \item Supervisor: Dr. \href{mailto:roberto.casadei@unibo.it}{Roberto Casadei}
@@ -98,15 +103,15 @@
             \item Reference: \href{mailto:czanella@onit.it}{Cecilia Zanella}
         \end{rSubsection}
         
-        \begin{rSubsection}{Tutor DM}{\textbf{Feb., 2021 $\rightarrow$ March 2021}}{Educational services sector}{University of Bologna}
+        \begin{rSubsection}{Tutor DM}{\textbf{Feb., 2021 $\rightarrow$ March 2021}}{Educational services sector}{University of Bologna, Italy}
             \item Technical support for mixed teaching and lessons supervision for Covid-19 prevention.
         \end{rSubsection}
         
-        \begin{rSubsection}{Master's Degree students Representative in Course Council}{\textbf{July, 2019 $\rightarrow$ March 2021}}{Computer Science and Engineering}{University of Bologna}
+        \begin{rSubsection}{Master's Degree students Representative in Course Council}{\textbf{July, 2019 $\rightarrow$ March 2021}}{Computer Science and Engineering}{University of Bologna, Italy}
             \item \url{https://corsi.unibo.it/magistrale/IngegneriaScienzeInformatiche/coordinatore-consiglio}
         \end{rSubsection}
         
-        \begin{rSubsection}{Master's Degree students Representative in AQ Council}{\textbf{July, 2019 $\rightarrow$ March 2021}}{Computer Science and Engineering}{University of Bologna}
+        \begin{rSubsection}{Master's Degree students Representative in AQ Council}{\textbf{July, 2019 $\rightarrow$ March 2021}}{Computer Science and Engineering}{University of Bologna, Italy}
             \item \url{https://corsi.unibo.it/magistrale/IngegneriaScienzeInformatiche/commissioni}
         \end{rSubsection}
         
@@ -120,13 +125,18 @@
     %----------------------------------------------------------------------------------------
     %	SOFTWARE DEVELOPMENT
     %----------------------------------------------------------------------------------------
-    
+    \newpage
     \begin{rSection}{Development of Research-related Software}
         
-        \begin{rSubsection}{PSyKE}{\textbf{November, 2021 $\rightarrow$ Ongoing}}{}{}
+        \begin{rSubsection}{PSyKE}{\textbf{Nov., 2021 $\rightarrow$ Ongoing}}{}{}
             \item a (python) platform for symbolic knowledge extraction from sub-symbolic predictors.
             \item \url{https://github.com/psykei/psyke-python}
         \end{rSubsection}
+    
+    \begin{rSubsection}{PSyKI}{\textbf{Apr., 2021 $\rightarrow$ Ongoing}}{}{}
+        \item a (python) platform for symbolic knowledge injection into sub-symbolic predictors.
+        \item \url{https://github.com/psykei/psyki-python}
+    \end{rSubsection}
         
     \end{rSection}
     
@@ -152,7 +162,7 @@
     %----------------------------------------------------------------------------------------
     %	TECHNICAL STRENGTHS SECTION
     %----------------------------------------------------------------------------------------
-    \newpage
+    % \newpage
     \begin{rSection}{Technical Strengths}
         \begin{tabular}{ @{} >{\bfseries}l @{\hspace{6ex}} l }
             Programming Paradigms	& imperative, object oriented, functional, logic\\
@@ -192,5 +202,15 @@
         
         %\includegraphics[width=6cm]{./firma.pdf}
     \end{flushright}
+
+    \pagebreak
+    \MakeUppercase{\bf List of Publications} % Section title
+    \sectionlineskip
+    \hrule % Horizontal line
+    \vspace{-1cm}
+    \nocite{*}
+    \bibliographystyle{chronological}
+    \renewcommand\refname{}
+    \bibliography{./papers}
     
 \end{document}
