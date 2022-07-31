@@ -117,7 +117,7 @@
                     \printaddress{\@addresstwo}}
                 \@ifundefined{@addressthree}{}{% Print the third address if specified
                     \printaddress{\@addressthree}}&\myprint{\@linkedin}\\
-                %\myprint{\@orcid}\\
+                &\myprint{\@orcid}\\
                 %\myprint{\@skype}\\
                 %&\myprint{\@www}\\
             \end{tabular}
