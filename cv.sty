@@ -11,3 +11,8 @@
 \usepackage{calrsfs}
 \usepackage[mathscr]{euscript}
 \DeclareMathAlphabet{\mathcalligra}{T1}{calligra}{m}{n}
+
+\makeatletter
+\newcommand*\bigcdot{\mathpalette\bigcdot@{.8}}
+\newcommand*\bigcdot@[2]{\mathbin{\vcenter{\hbox{\scalebox{#2}{$\m@th#1\bullet$}}}}}
+\makeatother
