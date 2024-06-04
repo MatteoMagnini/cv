@@ -1,6 +1,7 @@
 .idea
 .DS_Store
 pubblicazioni.pdf
+scholar.tex
 
 ## Core latex/pdflatex auxiliary files:
 *.aux

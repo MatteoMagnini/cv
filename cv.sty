@@ -1,7 +1,15 @@
 \usepackage[left=0.75in,top=0.6in,right=0.75in,bottom=0.6in]{geometry} % Document margins
-%\usepackage{hyperref}
 \usepackage{graphicx}
+\usepackage{tabularx}
 \usepackage{multicol}
+\usepackage[
+backend=biber,
+style=ieee,
+sorting=ynt,
+defernumbers=true,
+bibencoding=utf8
+]{biblatex}
+\usepackage[T1]{fontenc}
 \usepackage{calc}
 %\usepackage{censor}
 \usepackage{amsmath}
@@ -10,9 +18,36 @@
 \usepackage{calligra}
 \usepackage{calrsfs}
 \usepackage[mathscr]{euscript}
+\usepackage{textcomp}
+%\usepackage{enumitem}
+%% This gives us fun enumeration environments. compactitem will be nice.
+\usepackage{paralist}
 \DeclareMathAlphabet{\mathcalligra}{T1}{calligra}{m}{n}
 
 \makeatletter
 \newcommand*\bigcdot{\mathpalette\bigcdot@{.8}}
 \newcommand*\bigcdot@[2]{\mathbin{\vcenter{\hbox{\scalebox{#2}{$\m@th#1\bullet$}}}}}
 \makeatother
+
+% An itemize-style list with lots of space between items
+\newenvironment{outerlist}[1][\enskip\textbullet]%
+        {\begin{itemize}[#1]}{\end{itemize}%
+         \vspace{-.6\baselineskip}}
+
+% An environment IDENTICAL to outerlist that has better pre-list spacing
+% when used as the first thing in a \section
+\newenvironment{lonelist}[1][\enskip\textbullet]%
+        {\vspace{-\baselineskip}\begin{list}{#1}{%
+        \setlength{\partopsep}{0pt}%
+        \setlength{\topsep}{0pt}}}
+        {\end{list}\vspace{-.6\baselineskip}}
+
+% An itemize-style list with little space between items
+\newenvironment{innerlist}[1][\enskip\textbullet]%
+        {\begin{compactitem}[#1]}{\end{compactitem}}
+
+% An environment IDENTICAL to innerlist that has better pre-list spacing
+% when used as the first thing in a \section
+\newenvironment{loneinnerlist}[1][\enskip\textbullet]%
+        {\vspace{-\baselineskip}\begin{compactitem}[#1]}
+        {\end{compactitem}\vspace{-.6\baselineskip}}

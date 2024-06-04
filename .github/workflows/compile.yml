@@ -13,6 +13,9 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
+      - name: Generate bibliometrics
+        run: ruby scholar_scraper.rb
+
       - name: Build latex
         uses: xu-cheng/latex-action@v3
         with:
