@@ -16,7 +16,12 @@ jobs:
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: 2.7  # Adjust this to your Ruby version
+          ruby-version: 3.0
+
+      - name: Install dependencies
+        run: |
+          gem install nokogiri
+          # Add any other gem installations or setup commands here
 
       - name: Generate bibliometrics
         run: ruby scholar_scraper.rb
