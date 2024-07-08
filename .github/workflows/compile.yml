@@ -41,13 +41,13 @@ jobs:
         run: echo "::set-output name=time::$(date +'%Y-%m-%dT%H%M%S')"
 
       - name: Upload CV artifact
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: cv
           path: ./${{ env.LATEX_ROOT }}/${{ env.LATEX_ROOT }}.pdf
 
       - name: Upload Publications artifact
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: publications
           path: ./${{ env.LATEX_ROOT }}/publications_list.pdf
