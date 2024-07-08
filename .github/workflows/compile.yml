@@ -34,23 +34,18 @@ jobs:
           args: -pdf -file-line-error -halt-on-error -interaction=nonstopmode -shell-escape
 
       - name: Build publication list
-        run: latexmk -pdf -file-line-error -halt-on-error -interaction=nonstopmode -shell-escape publication_list.tex
+        run: latexmk -pdf -file-line-error -halt-on-error -interaction=nonstopmode -shell-escape publications_list.tex
+
+      - name: Bump version
+        id: bump-version
+        uses: anothrNick/github-tag-action@1.69.0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          DRY_RUN: true
 
       - name: Get Time
         id: current-time
         run: echo "::set-output name=time::$(date +'%Y-%m-%dT%H%M%S')"
-
-      - name: Upload CV artifact
-        uses: actions/upload-artifact@v2
-        with:
-          name: cv
-          path: ./${{ env.LATEX_ROOT }}/${{ env.LATEX_ROOT }}.pdf
-
-      - name: Upload Publications artifact
-        uses: actions/upload-artifact@v2
-        with:
-          name: publications
-          path: ./${{ env.LATEX_ROOT }}/publications_list.pdf
 
       - name: Create Release
         id: create_release
@@ -59,23 +54,14 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           tag_name: '${{ steps.bump-version.outputs.new_tag }}-${{ steps.current-time.outputs.time }}'
-          release_name: "CV and Publications Release"
-          body: "This release includes the compiled CV and publications."
-          draft: false
-          prerelease: false
 
-      - name: Upload CV to Release
+      - name: Upload Release Asset
+        id: upload-release-asset
         uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./path-to-cv-directory/cv.pdf
-          asset_name: cv.pdf
-          asset_content_type: application/pdf
-
-      - name: Upload Publications to Release
-        uses: actions/upload-release-asset@v1
-        with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./path-to-publications-directory/publications.pdf
-          asset_name: publications.pdf
+          asset_path: ./${{ env.LATEX_ROOT }}.pdf
+          asset_name: ${{ env.LATEX_ROOT }}.pdf
           asset_content_type: application/pdf
