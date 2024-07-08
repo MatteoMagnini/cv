@@ -1,6 +1,7 @@
+out/
 .idea
 .DS_Store
-pubblicazioni.pdf
+publications_list.pdf
 scholar.tex
 
 ## Core latex/pdflatex auxiliary files:
