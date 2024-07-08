@@ -58,8 +58,8 @@ jobs:
         with:
           tag_name: '${{ steps.bump-version.outputs.new_tag }}-${{ steps.current-time.outputs.time }}'
 
-      - name: Upload Release Asset
-        id: upload-release-asset
+      - name: Upload Release Asset CV
+        id: upload-release-asset-cv
         uses: actions/upload-release-asset@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -67,4 +67,15 @@ jobs:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
           asset_path: ./${{ env.LATEX_ROOT }}.pdf
           asset_name: ${{ env.LATEX_ROOT }}.pdf
+          asset_content_type: application/pdf
+
+      - name: Upload Release Asset Publications
+        id: upload-release-asset-publications
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./publications_list.pdf
+          asset_name: publications_list.pdf
           asset_content_type: application/pdf
