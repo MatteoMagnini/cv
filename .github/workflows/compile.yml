@@ -34,7 +34,10 @@ jobs:
           args: -pdf -file-line-error -halt-on-error -interaction=nonstopmode -shell-escape
 
       - name: Build publication list
-        run: latexmk -pdf -file-line-error -halt-on-error -interaction=nonstopmode -shell-escape publications_list.tex
+        uses: xu-cheng/latex-action@v3
+        with:
+          root_file: publications_list.tex
+          args: -pdf -file-line-error -halt-on-error -interaction=nonstopmode -shell-escape
 
       - name: Bump version
         id: bump-version
