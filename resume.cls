@@ -57,7 +57,7 @@
 % \printaddress is used to style an address line (given as input)
 \def \printaddress #1{
     \begingroup
-    \def \\ {\addressSep\ }
+    %\def \\ {\addressSep\ }
     Address: #1%\centerline{#1}
     \endgroup
     %\par
@@ -77,10 +77,13 @@
 \def \phone #1{\def \@phone {Phone: #1}}
 \def \skype #1{\def \@skype {Skype: #1}}
 \def \orcid #1{\def \@orcid {ORCiD: #1}}
+\def \googlescholar #1{\def \@googlescholar {Google Scholar: #1}}
+\def \github #1{\def \@github {GitHub: #1}}
 \def \linkedin #1{\def \@linkedin {Linkedin: #1}}
-\def \birthday #1{\def \@birthday { Birthday: #1}}
-\def \genre #1{\def \@genre { Genre: #1}}
+\def \birthday #1{\def \@birthday {Birthday: #1}}
+\def \genre #1{\def \@genre {Genre: #1}}
 \def \country #1{\def \@country {Country: #1}}
+\def \town #1{\def \@town {Town: #1}}
 \def \email #1{\def \@email {E-mail: #1}}
 \def \www #1{\def \@www {Web Page: #1}}
 \def \photo #1{\def \@photo {#1}}
@@ -109,15 +112,17 @@
         {\centering
             \begin{tabular}{l@{\hskip 1cm}l}
                 \multicolumn{2}{c}{\printname}\\% Print the name specified with \name
-                \myprint{\@birthday}&\myprint{\@phone}\\
-                \myprint{\@genre}&\myprint{\@email}\\
+                \myprint{\@birthday}&\myprint{\@linkedin}\\
+                %\myprint{\@genre}&\myprint{\@email}\\
                 \@ifundefined{@addressone}{}{% Print the first address if specified
                     \printaddress{\@addressone}}
                 \@ifundefined{@addresstwo}{}{% Print the second address if specified
                     \printaddress{\@addresstwo}}
                 \@ifundefined{@addressthree}{}{% Print the third address if specified
-                    \printaddress{\@addressthree}}&\myprint{\@linkedin}\\
-                &\myprint{\@orcid}\\
+                    \printaddress{\@addressthree}}&\myprint{\@email}\\
+                \myprint{\@town}&\myprint{\@github}\\
+                \myprint{\@country}&\myprint{\@orcid}\\
+                \myprint{\@phone}&\myprint{\@googlescholar}\\
                 %\myprint{\@skype}\\
                 %&\myprint{\@www}\\
             \end{tabular}
