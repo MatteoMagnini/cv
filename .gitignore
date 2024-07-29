@@ -1,6 +1,7 @@
 out/
 .idea
 .DS_Store
+bibliography.bib
 publications_list.pdf
 scholar.tex
 
