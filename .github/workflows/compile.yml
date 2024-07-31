@@ -22,13 +22,16 @@ jobs:
       - name: Install dependencies
         run: |
           gem install nokogiri
+          gem install bibtex-ruby
           # Add any other gem installations or setup commands here
 
       - name: Generate bibliometrics
         run: ruby scholar_scraper.rb
 
       - name: Generate bibliography
-        run: ruby publications_scraper.rb
+        run: |
+          ruby publications_scraper.rb
+          ruby bibtex_prettifier.rb
 
       - name: Build latex
         uses: xu-cheng/latex-action@v3
