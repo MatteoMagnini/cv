@@ -5,6 +5,8 @@ on:
       - master
       - main
   workflow_dispatch:
+  schedule:
+    - cron: '0 0 * * 0'
 env:
   LATEX_ROOT: cv
 jobs:
@@ -63,6 +65,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           tag_name: '${{ steps.bump-version.outputs.new_tag }}-${{ steps.current-time.outputs.time }}'
+          release_name: '${{ steps.bump-version.outputs.new_tag }}-${{ steps.current-time.outputs.time }}'
 
       - name: Upload Release Asset CV
         id: upload-release-asset-cv
