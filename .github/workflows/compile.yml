@@ -32,9 +32,13 @@ jobs:
           set +e
           ruby scholar_scraper.rb 2>&1 | tee scraper.log
           STATUS=${PIPESTATUS[0]}
+          echo "----------Scraper-Log----------"
           cat scraper.log
+          echo "----------End-of-Scraper-Log----------"
           if grep -q "HTTP redirection loop" scraper.log; then
             echo "⚠️ ignoring Scopus redirect loop."
+          elif grep -q "403 Forbidden" scraper.log; then
+            echo "⚠️ ignoring 403 Forbidden da Google Scholar."
           elif [ $STATUS -ne 0 ]; then
             echo "❌ Error in scholar_scraper.rb"
             exit $STATUS

@@ -6,10 +6,12 @@ require 'open-uri'
 
 def download_html(url)
   URI.open(url,
-    'User-Agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) '\
-                    'AppleWebKit/537.36 (KHTML, like Gecko) '\
-                    'Chrome/113.0.0.0 Safari/537.36'
-  ) { |resp| Nokogiri::HTML(resp.read) }
+  'User-Agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) '\
+                  'AppleWebKit/537.36 (KHTML, like Gecko) '\
+                  'Chrome/113.0.0.0 Safari/537.36',
+  'Accept-Language' => 'en-US,en;q=0.9',
+  'Accept' => 'text/html,application/xhtml+xml'
+) { |resp| Nokogiri::HTML(resp.read) }
 end
 
 #Scholar
