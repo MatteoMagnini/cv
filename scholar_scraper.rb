@@ -2,11 +2,14 @@
 require 'nokogiri'
 require 'net/http'
 require 'pathname'
+require 'open-uri'
 
 def download_html(url)
-    uri = URI.parse(url)
-    response = Net::HTTP.get(uri)
-    Nokogiri::HTML(response)
+  URI.open(url,
+    'User-Agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) '\
+                    'AppleWebKit/537.36 (KHTML, like Gecko) '\
+                    'Chrome/113.0.0.0 Safari/537.36'
+  ) { |resp| Nokogiri::HTML(resp.read) }
 end
 
 #Scholar
