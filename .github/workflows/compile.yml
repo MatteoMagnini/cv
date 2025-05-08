@@ -28,7 +28,18 @@ jobs:
           # Add any other gem installations or setup commands here
 
       - name: Generate bibliometrics
-        run: ruby scholar_scraper.rb
+        run: |
+          set +e
+          ruby scholar_scraper.rb 2>&1 | tee scraper.log
+          STATUS=${PIPESTATUS[0]}
+          cat scraper.log
+          if grep -q "HTTP redirection loop" scraper.log; then
+            echo "⚠️ ignoring Scopus redirect loop."
+          elif [ $STATUS -ne 0 ]; then
+            echo "❌ Error in scholar_scraper.rb"
+            exit $STATUS
+          fi
+          set -e
 
       - name: Generate bibliography
         run: |
