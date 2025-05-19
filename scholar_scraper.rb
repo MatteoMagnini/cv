@@ -1,7 +1,8 @@
-#!/usr/bin/env ruby
+#! /usr/bin/env ruby
 require 'nokogiri'
 require 'net/http'
-require 'uri'
+require 'pathname'
+require 'open-uri'
 
 def random_ip
   loop do
@@ -19,27 +20,15 @@ def random_user_agent
   ip = random_ip
   "Mozilla/5.0 (Windows NT 10.0; Win64; x64; IP=#{ip}) " \
   "AppleWebKit/537.36 (KHTML, like Gecko) " \
-  "Chrome/113.0.0.0 Safari/537.36"
+  "Chrome/#{ip} Safari/537.36"
 end
 
 def download_html(url)
-  uri = URI.parse(url)
-  http = Net::HTTP.new(uri.host, uri.port)
-  http.use_ssl = (uri.scheme == 'https')
-
-  request = Net::HTTP::Get.new(uri.request_uri)
-
-  # User-Agent e IP random
-  request['User-Agent'] = random_user_agent
-  request['X-Forwarded-For'] = random_ip
-  request['Client-IP'] = random_ip
-
-  response = http.request(request)
-  raise "HTTP Error #{response.code}" unless response.is_a?(Net::HTTPSuccess)
-  Nokogiri::HTML(response.body)
-rescue => e
-  puts "Errore nel download: #{e.message}"
-  nil
+  URI.open(url,
+  'User-Agent' => random_user_agent,
+  'Accept-Language' => 'en-US,en;q=0.9',
+  'Accept' => 'text/html,application/xhtml+xml'
+) { |resp| Nokogiri::HTML(resp.read) }
 end
 
 def generate_scholar_tex
