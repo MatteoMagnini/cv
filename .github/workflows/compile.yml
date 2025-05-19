@@ -25,6 +25,7 @@ jobs:
         run: |
           gem install nokogiri
           gem install bibtex-ruby
+          gem install open-uri
           # Add any other gem installations or setup commands here
 
       - name: Generate bibliometrics
