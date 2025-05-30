@@ -46,6 +46,12 @@ jobs:
           fi
           set -e
 
+      - name: Print bibliometrics (debug purpose)
+        run: |
+          echo "----------Bibliometrics----------"
+          cat scholar.tex
+          echo "----------End-of-Bibliometrics----------"
+
       - name: Generate bibliography
         run: |
           ruby publications_scraper.rb
