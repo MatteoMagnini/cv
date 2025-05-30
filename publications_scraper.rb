@@ -62,7 +62,7 @@ def generate_bib_file(author_url, output_file)
   puts "File BibTeX: #{output_file}"
 end
 
-author_url = 'https://dblp.org/pid/329/5724.html'
+author_url = 'https://dblp.uni-trier.de/pid/329/5724.html'
 output_file = 'bibliography.bib'
 
 generate_bib_file(author_url, output_file)
