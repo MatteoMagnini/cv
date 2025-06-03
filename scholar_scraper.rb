@@ -32,7 +32,8 @@ def download_html(url)
 end
 
 def generate_scholar_tex
-  scholar_url = 'https://scholar.google.com/citations?user=iJDPEaUAAAAJ&hl=en'
+#   scholar_url = 'https://scholar.google.com/citations?user=iJDPEaUAAAAJ&hl=en'
+  scholar_url = 'https://scholar.google.it/citations?user=iJDPEaUAAAAJ&hl=it&oi=ao'
   scholar_page = download_html(scholar_url)
   return false unless scholar_page
 
