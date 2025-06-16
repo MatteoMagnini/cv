@@ -46,6 +46,15 @@ jobs:
           fi
           set -e
 
+      - name: Backup fallback bibliometrics
+        run: |
+          if [ ! -f scholar.tex ]; then
+            echo "No bibliometrics found, using fallback."
+            cp scholar_fallback.tex scholar.tex
+          else
+            echo "Bibliometrics found, using existing file."
+          fi
+
       - name: Print bibliometrics (debug purpose)
         run: |
           echo "----------Bibliometrics----------"
