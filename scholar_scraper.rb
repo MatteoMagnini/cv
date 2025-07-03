@@ -79,6 +79,10 @@ def generate_scholar_tex
 end
 
 # Retry loop in CI
+
+# If the file 'scholar.tex' exists, remove it
+File.delete('scholar.tex') if File.exist?('scholar.tex')
+
 max_attempts = 3
 attempt = 1
 until File.exist?('scholar.tex') || attempt > max_attempts
