@@ -67,13 +67,13 @@ jobs:
           ruby bibtex_prettifier.rb
 
       - name: Build latex
-        uses: xu-cheng/latex-action@v3
+        uses: xu-cheng/latex-action@v4
         with:
           root_file: ${{ env.LATEX_ROOT }}.tex
           args: -pdf -file-line-error -halt-on-error -interaction=nonstopmode -shell-escape
 
       - name: Build publication list
-        uses: xu-cheng/latex-action@v3
+        uses: xu-cheng/latex-action@v4
         with:
           root_file: publications_list.tex
           args: -pdf -file-line-error -halt-on-error -interaction=nonstopmode -shell-escape
