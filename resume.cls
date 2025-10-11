@@ -91,7 +91,7 @@
 \def \addphoto #1{
     \begin{minipage}{.2\textwidth}
         \centering
-        \includegraphics[width=30mm]{#1}
+        \includegraphics[width=32mm]{#1}
         %\includegraphics[width=64pt]{#1}
     \end{minipage}		
 }
