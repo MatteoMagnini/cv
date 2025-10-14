@@ -1,4 +1,5 @@
 out/
+backups
 .idea
 .DS_Store
 bibliography.bib

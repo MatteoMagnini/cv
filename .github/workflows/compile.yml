@@ -26,6 +26,11 @@ jobs:
           gem install nokogiri
           gem install bibtex-ruby
           gem install open-uri
+          gem install fileutils
+          gem install mechanize
+          gem install securerandom
+          gem install fuzzy-string-match
+          gem install time
           # Add any other gem installations or setup commands here
 
       - name: Generate bibliometrics
@@ -64,6 +69,8 @@ jobs:
       - name: Generate bibliography
         run: |
           ruby publications_scraper.rb
+          ruby bibtex_prettifier.rb
+          ruby publication_scraper_scholar.rb
           ruby bibtex_prettifier.rb
 
       - name: Build latex
