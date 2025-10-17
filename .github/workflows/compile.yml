@@ -69,8 +69,7 @@ jobs:
       - name: Generate bibliography
         run: |
           ruby publications_scraper.rb
-          ruby bibtex_prettifier.rb
-          ruby publication_scraper_scholar.rb
+          ruby include_missing_papers.rb
           ruby bibtex_prettifier.rb
 
       - name: Build latex
