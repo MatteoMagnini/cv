@@ -75,6 +75,8 @@
 }
 
 \def \phone #1{\def \@phone {Phone: #1}}
+\def \website #1{\def \@website {Website: #1}}
+\def \telegram #1{\def \@telegram {Telegram: #1}}
 \def \skype #1{\def \@skype {Skype: #1}}
 \def \orcid #1{\def \@orcid {ORCiD: #1}}
 \def \googlescholar #1{\def \@googlescholar {Google Scholar: #1}}
@@ -122,7 +124,8 @@
                     \printaddress{\@addressthree}}&\myprint{\@email}\\
                 \myprint{\@town}&\myprint{\@github}\\
                 \myprint{\@country}&\myprint{\@orcid}\\
-                \myprint{\@phone}&\myprint{\@googlescholar}\\
+                \myprint{\@website}&\myprint{\@googlescholar}\\
+                %\myprint{\@phone}&\
                 %\myprint{\@skype}\\
                 %&\myprint{\@www}\\
             \end{tabular}
