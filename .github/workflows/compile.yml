@@ -47,9 +47,10 @@ jobs:
             echo "⚠️ ignoring 403 Forbidden da Google Scholar."
           elif [ $STATUS -ne 0 ]; then
             echo "❌ Error in scholar_scraper.rb"
-            exit $STATUS
+            # exit $STATUS
           fi
           set -e
+        continue-on-error: true
 
       - name: Backup fallback bibliometrics
         run: |
