@@ -8,14 +8,38 @@ BIB_DIR  = 'bibtex'
 
 # Parse all BibTeX entries from a text block
 def parse_bib_entries(text)
-  text.scan(/@(\w+)\s*\{[^@]*?\}\s*(?=@|\z)/m)
-      .map { |_,| Regexp.last_match[0] }
+  entries = []
+  i = 0
+
+  while i < text.length
+    start = text.index('@', i)
+    break unless start
+
+    brace = text.index('{', start)
+    break unless brace
+
+    depth = 1
+    j = brace + 1
+
+    while j < text.length && depth > 0
+      depth += 1 if text[j] == '{'
+      depth -= 1 if text[j] == '}'
+      j += 1
+    end
+
+    entries << text[start...j]
+    i = j
+  end
+
+  entries
 end
 
 # Extract and normalize title and DOI
 def extract_title_and_doi(entry)
-  title = entry[/title\s*=\s*\{(.*?)\}/im, 1]
-  doi   = entry[/doi\s*=\s*\{(.*?)\}/im, 1]
+  title = entry[/title\s*=\s*(?:{(.*?)}|"(.*?)")/im, 1] ||
+        entry[/title\s*=\s*(?:{(.*?)}|"(.*?)")/im, 2]
+  doi = entry[/doi\s*=\s*(?:{(.*?)}|"(.*?)")/im, 1] ||
+      entry[/doi\s*=\s*(?:{(.*?)}|"(.*?)")/im, 2]
   normalized_title = title&.downcase&.gsub(/[^a-z0-9]/, '')
   [normalized_title, doi&.strip]
 end
