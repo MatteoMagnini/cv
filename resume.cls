@@ -112,7 +112,7 @@
     \begin{tabular}{l l}
         \addphoto{\@photo}&
         {\centering
-            \begin{tabular}{l@{\hskip 1cm}l}
+            \begin{tabular}{l@{\hskip 0.5cm}l}
                 \multicolumn{2}{c}{\printname}\\% Print the name specified with \name
                 \myprint{\@birthday}&\myprint{\@linkedin}\\
                 %\myprint{\@genre}&\myprint{\@email}\\
